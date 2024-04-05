@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles/app.css">
+    <title>Svelte & Tailwind</title>
+</head>
+<body>
+    <h1>CrashCourse Svelte</h1>
+
+    <main>
+        <h2>Svelte</h2>
+        <section>
+            <h3>¿Qué es Svelte?</h3>
+            <p><span class="parentesis">(</span>
+                Un framework de JS que nos facilita la escritura de código para el desarrollo web.
+                <span class="parentesis">)</span>
+            </p>
+            <p>
+                Svelte es un marco de trabajo de código abierto para construir interfaces de usuario interactivas en la web. A diferencia de otros marcos como React o Vue, Svelte realiza la mayor parte del trabajo durante la compilación en lugar de en tiempo de ejecución. Esto significa que en lugar de enviar una biblioteca voluminosa al navegador, Svelte compila tu aplicación en código JavaScript optimizado y altamente eficiente.
+            </p>
+            <p>
+                Con Svelte, escribes código usando un lenguaje similar a HTML con características adicionales para la lógica y el manejo de eventos. Luego, este código se compila en código JavaScript altamente optimizado que actualiza el DOM de manera eficiente. Esta aproximación le da a Svelte un rendimiento muy rápido y un tamaño de paquete pequeño, lo que lo hace ideal para aplicaciones web de alto rendimiento.
+            </p>
+        </section>
+
+        <section>
+            <h3>¿Por qué Svelte?</h3>
+            <p>
+                Hay varias razones por las que alguien podría elegir Svelte sobre otros marcos de trabajo de JavaScript para el desarrollo de aplicaciones web:
+            </p>
+            <dl>
+                <dt><b>Rendimiento</b></dt>
+                <dd>Svelte realiza la mayor parte del trabajo durante la compilación en lugar de en tiempo de ejecución, lo que resulta en un código más optimizado y un rendimiento más rápido en comparación con otros marcos que realizan más trabajo en el navegador.</dd>
+                <dt><b>Tamaño del paquete</b></dt>
+                <dd>Debido a su enfoque de compilación, las aplicaciones Svelte tienden a tener un tamaño de paquete más pequeño en comparación con otros marcos, lo que las hace más rápidas de cargar y más eficientes en el uso de los recursos del cliente.</dd>
+                <dt><b>Sintaxis intuitiva</b></dt>
+                <dd>Svelte utiliza una sintaxis similar a HTML, lo que facilita la escritura y comprensión del código para muchos desarrolladores, especialmente aquellos que ya están familiarizados con HTML y CSS.
+                </dd>
+                <dt><b>Menos abstracción</b></dt>
+                <dd>Svelte es menos abstracto que otros marcos, lo que significa que puedes trabajar directamente con el DOM y tener un mayor control sobre cómo se actualiza y renderiza tu aplicación.</dd>
+                <dt><b>Facilidad de aprendizaje</b></dt>
+                <dd>Debido a su sintaxis intuitiva y enfoque menos abstracto, Svelte puede ser más fácil de aprender para aquellos nuevos en el desarrollo web o para aquellos que desean una curva de aprendizaje más suave.</dd>
+            </dl>
+            <p>
+                En resumen, Svelte ofrece un enfoque diferente para el desarrollo de aplicaciones web que prioriza el rendimiento, el tamaño del paquete y la facilidad de uso, lo que lo hace una opción atractiva para muchos desarrolladores.
+            </p>
+        </section>
+
+        <section>
+            <h3>¿Cómo instalar NodeJS?</h3>
+            <p>
+                Para instalar <a href="https://nodejs.org/en" target="_blank">NodeJS</a> descargamos en isntalador desde la página oficial y lo ejecutamos. A continuación, seguimos los pasos del instalador para completar la instalación de NodeJS en nuestro sistema.
+            </p>
+        </section>
+
+        <section>
+            <h3>¿Cómo crear un proyecto en Svelte?</h3>
+            <p>
+                Una vez instalado <a href="https://nodejs.org/en" target="_blank">NodeJS</a>, podemos crear un nuevo proyecto de Svelte utilizando la herramienta de línea de comandos <b><i><a href="https://docs.npmjs.com/about-npm" target="_blank">npm</a></i></b> que viene con <a href="https://nodejs.org/en" target="_blank">NodeJS</a>. Para crear un nuevo proyecto de Svelte, ejecutamos el siguiente comando en la terminal:
+            </p>
+            
+            <pre>
+                <code>
+    npm create svelte@latest NOMBRE_DEL_PROYECTO
+                </code>
+            </pre>
+
+            <p>
+                Cambiamos a la carpeta del proyecto recién creado:
+            </p>
+
+            <pre>
+                <code>
+    cd NOMBRE_DEL_PROYECTO
+                </code>
+            </pre>
+
+            <p>
+                Y luego instalamos las dependencias del proyecto:
+            </p>
+
+            <pre>
+                <code>
+    npm install
+                </code>
+            </pre>
+
+            <p>
+                Con esto, hemos creado un nuevo proyecto de Svelte y estamos listos para comenzar a desarrollar nuestra aplicación web.
+            </p>
+            <p>
+                Si queremos ver nuestra aplicación en funcionamiento, podemos ejecutar el siguiente comando en la terminal:
+            </p>
+
+            <pre>
+                <code>
+    npm run dev
+                </code>
+            </pre>
+        </section>
+
+
+        <section>
+            <h3>Entender Svelte por partes</h3>
+            <p>
+                En Svelte hay tres partes principales que debemos conocer para poder desarrollar aplicaciones web con él:
+            </p>
+
+            <dl>
+                <dt><b>Script</b></dt>
+                <dd>Donde escribimos la lógica de nuestra aplicación en JavaScript/TypeScript.</dd>
+                <dt><b>HTML</b></dt>
+                <dd>Donde escribimos la estructura de nuestra aplicación en HTML.</dd>
+                <dt><b>Style</b></dt>
+                <dd>Donde escribimos los estilos de nuestra aplicación en CSS.</dd>
+            </dl>
+
+            <pre>
+                <code>
+    &lt;script&gt;
+        <span class="comentario">// Lógica de la aplicación</span>
+    &lt;/script&gt;
+    
+    <span class="comentario">&lt;!-- Estructura HTML --&gt;</span>
+
+    &lt;style&gt;
+        <span class="comentario">/* Estilos de la aplicación */</span>
+    &lt;/style&gt;
+                </code>
+            </pre>
+        </section>
+        
+        <section>
+            <h4>Crear nuestro primer componente</h4>
+            <p>
+                Quiero hacer un botón que tenga como mensaje "Hola Svelte!" y cuando se le haga click cambie el mensaje a "Hola Mundo!".
+            </p>
+
+            <pre>
+                <code>
+    &lt;script&gt;
+        let word = 'Hola Svelte';
+    
+        function handleClick(){
+            word = 'Hola Mundo!'
+        }
+    &lt;/script&gt;
+    
+    &lt;button on:click={handleClick}&gt;{ word }&lt;/button&gt;
+    
+    &lt;style&gt;
+        button{
+            background: red;
+            color: black;
+        }
+    &lt;/style&gt;
+                </code>
+            </pre>
+        </section>
+
+        <section>
+            <h4>Declaraciones reactivas</h4>
+            <p>
+                Creamos el tipico botón que al hacer click aumenta un contador.
+            </p>
+
+            <pre>
+                <code>
+    &lt;script&gt;
+        let counter = 0;
+    
+        function handleClick(){
+            counter++
+        }
+    &lt;/script&gt;
+    
+    &lt;button on:click={handleClick}&gt;{ counter }&lt;/button&gt;
+    
+    &lt;style&gt;
+        button{
+            color: black;
+        }
+    &lt;/style&gt;
+                </code>
+            </pre>
+            <p>
+                Pero ahora le queremos añadir que nos diga si es par o impar el número que muestra
+            </p>
+            <pre>
+                <code>
+    &lt;script&gt;
+        let counter = 0;
+    
+        function handleClick(){
+            counter++
+        }
+    
+        let isEvenOrOdd = counter % 2 === 0 ? 'Par' : 'Impar'
+    &lt;/script&gt;
+    
+    &lt;button on:click={handleClick}&gt;{ counter }{isEvenOrOdd}&lt;/button&gt;
+    
+    &lt;style&gt;
+        button{
+            color: black;
+        }
+    &lt;/style&gt;
+                </code>
+            </pre>
+
+            <p>
+                El error que tenemos aqui es que la variable <b><i>isEvenOrOdd</i></b> no se actualiza cuando el contador cambia, para solucionar esto debemos hacer que sea una variable reactiva.
+            </p>
+            <p>
+                Para poder hacer que sea una variable reactiva 
+                usamos <b><i>$:</i></b> en vez de <b><i>let</i></b>.
+            </p>
+
+            <pre>
+                <code>
+    &lt;script&gt;
+        let counter = 0;
+    
+        function handleClick(){
+            counter++
+        }
+    
+        $: isEvenOrOdd = counter % 2 === 0 ? 'Par' : 'Impar'
+    &lt;/script&gt;
+    
+    &lt;button on:click={handleClick}&gt;{ counter } {isEvenOrOdd}&lt;/button&gt;
+    
+    &lt;style&gt;
+        button{
+            color: black;
+        }
+    &lt;/style&gt;
+                </code>
+            </pre>
+
+            <p>
+                Pero esta declaración reactiva es muy simple, si queremos ejecutar un bloque de código podemos usar <b><i>$: {}</i></b>.
+            </p>
+            <pre>
+                <code>
+    &lt;script&gt;
+        let counter = 0;
+    
+        function handleClick(){
+            counter++
+        }
+    
+        $: isEvenOrOdd = counter % 2 === 0 ? 'Par' : 'Impar'
+        $: {
+            if (counter &gt; 10){
+                counter = 10
+            }
+        }
+    &lt;/script&gt;
+    
+    &lt;button on:click={handleClick}&gt;{ counter } {isEvenOrOdd}&lt;/button&gt;
+    
+    &lt;style&gt;
+        button{
+            color: black;
+        }
+    &lt;/style&gt;
+                </code>
+            </pre>
+
+        </section>
+
+        <section>
+            <h4>Fetching</h4>
+            <p>
+                Queremos capturar el input de un usuario y mostrarlo en la consola.
+            </p>
+
+            <pre>
+                <code>
+    &lt;script&gt;
+        let value = '';
+        function handleInput(event){
+            value = event.target.value
+        }
+        <span class="comentario">// Aqui con una declaración reactiva mostramos el valor en consola</span>
+        $: console.log(value)
+    &lt;/script&gt;
+    
+    &lt;input value={value} on:input={handleInput} placeholder="Search ID..."/&gt;
+    
+    &lt;style&gt;
+    &lt;/style&gt;
+                </code>
+            </pre>
+
+            <p>Sabiendo como capturar el input de un usuario, ahora podemos usarlo para hacer peticiones a nuestra API.</p>
+
+            <p>En este caso, usaremos una API sencilla que es para productos.</p>
+
+            <a href="https://products-api-fastapi.onrender.com/" target="_blank">https://products-api-fastapi.onrender.com/</a>
+
+            <pre>
+                <code>
+    &lt;script&gt;
+        let value = '';
+        function handleInput(event){
+                value = event.target.value
+        }
+    
+        $: if (value !== ''){
+            <span class="comentario">// Aqui usamos el endpoint que la api nos da para traer solo 1 producto a base del ID que se ingrese</span>
+            fetch(`https://products-api-fastapi.onrender.com/products/${value}`)
+            .then(res =&gt; res.json())
+            .then(apiResponse =&gt; {
+                console.log(apiResponse)
+            })
+        }
+    &lt;/script&gt;
+    
+    &lt;input value={value} on:input={handleInput}/&gt;
+                </code>
+            </pre>
+
+        </section>
+
+        <section>
+            <h4>Renderizado condicional</h4>
+            <p>
+                El renderizado condicional es una técnica que nos permite mostrar u ocultar elementos en función de una condición. En Svelte, podemos lograr esto utilizando las directivas:
+            </p>
+            <ul>
+                <li>
+                    <b><i>{&#35;if}</i></b> que va acompañada de <b><i>{/if}</i></b> para indicar el fin del if
+                </li>
+                <li><b><i>{:else}</i></b> lo ponemos para manejar este tipos de casos.</li>
+            </ul>
+            <pre>
+                <code>
+    {&#35;if condition}
+        &lt;span&gt;Mensaje&lt;/span&gt;
+    {:else}
+        &lt;span&gt;Mensaje&lt;/span&gt;
+    {/if}
+                </code>
+            </pre>
+        </section>
+
+        <section>
+            <h5>Renderizar lista de elementos</h5>
+
+            <p>
+                Podemos usar la directiva <b><i>{&#35;each}</i></b> para recorrer una lista de elementos y renderizarlos en nuestra aplicación. La directiva <b><i>{/each}</i></b> se utiliza para indicar el final del bucle.
+            </p>
+
+            <pre>
+                <code>
+    &lt;script&gt;
+        let miLista = [
+            {
+                "title": "Laptop",
+                "precio": 1000,
+                "imgURL": "https://http2.mlstatic.com/D_NQ_NP_850508-MLU72263308719_102023-O.webp"
+            },
+            {
+            "title": "Mouse",
+            "precio": 500
+            },
+            {
+            "title": "Monitor",
+            "precio": 700
+            },
+            {
+            "title": "Teclado",
+            "precio": 499
+            },
+            {
+            "title": "Audifonos",
+            "precio": 300
+            }
+        ]
+    &lt;/script&gt;
+    
+    {&#35;each miLista as item}
+        &lt;div&gt;
+            {&#35;if item.imgURL}
+		&lt;img src={item.imgURL} alt={item.title}/&gt;
+            {/if}
+            &lt;p&gt;{item.title}&lt;/p&gt;
+            &lt;p&gt;${item.precio}&lt;/p&gt;
+            &lt;hr/&gt;
+        &lt;/div&gt;
+    {/each}
+    
+    &lt;style&gt;
+    &lt;/style&gt;
+                </code>
+            </pre>
+        </section>
+    </main>
+</body>
+</html>
